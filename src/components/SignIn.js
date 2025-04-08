@@ -26,6 +26,9 @@ function Notes() {
       <ListItem>
         管理人が必要と判断した場合、メッセージを削除することがあります。
       </ListItem>
+      <ListItem>
+        再入場の際に、同じアイコンを使用したい場合は、同じ名前（ニックネーム）で入場してください。
+      </ListItem>
     </List>
   );
 }
@@ -47,7 +50,7 @@ const Paper = styled("div")(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   textAlign: "center",
-  backgroundColor: "rgba(255, 255, 255, 0.9)",
+  backgroundColor: "rgba(255, 255, 255, 0.8)",
   padding: theme.spacing(4),
   borderRadius: theme.spacing(2),
   width: "100%",

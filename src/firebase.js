@@ -1,4 +1,13 @@
-import firebase from 'firebase';
+import { initializeApp } from "firebase/app";
+import {
+  getDatabase,
+  ref,
+  push,
+  query,
+  limitToLast,
+  onValue,
+  orderByKey,
+} from "firebase/database";
 
 const {
   REACT_APP_FIREBASE_API_KEY,
@@ -20,10 +29,25 @@ const firebaseConfig = {
   appId: REACT_APP_FIREBASE_APP_ID,
 };
 
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-export const messagesRef = database.ref('messages');
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+export const messagesRef = ref(database, "messages");
 
 export const pushMessage = ({ name, text, IsChecked }) => {
-  messagesRef.push({ name, text, IsChecked });
+  push(messagesRef, { name, text, IsChecked });
+};
+
+export const getMessages = (callback) => {
+  const messagesQuery = query(messagesRef, orderByKey(), limitToLast(3000));
+  return onValue(messagesQuery, (snapshot) => {
+    const messages = snapshot.val();
+    if (messages === null) return;
+
+    const entries = Object.entries(messages);
+    const newMessages = entries.map((entry) => {
+      const [key, nameAndText] = entry;
+      return { key, ...nameAndText };
+    });
+    callback(newMessages);
+  });
 };

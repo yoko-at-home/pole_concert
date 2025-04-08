@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { List } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { List } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
 import MessageItem from './MessageItem';
 import { messagesRef } from '../firebase';
@@ -14,17 +14,14 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles({
-  root: {
-    gridRow: 1,
-    overflow: 'auto',
-    width: '100%',
-  },
+const Root = styled("div")({
+  gridRow: 1,
+  overflow: "auto",
+  width: "100%",
 });
 
 const MessageList = () => {
   const [messages, setMessages] = useState([]);
-  const classes = useStyles();
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -55,13 +52,13 @@ const MessageList = () => {
       <Tabs
         value={value}
         onChange={handleChange}
-        aria-label='simple tabs example'
+        aria-label="simple tabs example"
         centered
       >
-        <Tab label='すべてのメッセージ' {...a11yProps(0)} />
-        <Tab label='質問だけ見る' {...a11yProps(1)} />
+        <Tab label="すべてのメッセージ" {...a11yProps(0)} />
+        <Tab label="質問だけ見る" {...a11yProps(1)} />
       </Tabs>
-      <List className={classes.root}>
+      <List className={Root}>
         {messages
           .filter(({ IsChecked }) => IsChecked === true || value === 0)
           .map(({ key, name, text, IsChecked }, index) => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { IconButton } from '@material-ui/core';
-import SendIcon from '@material-ui/icons/Send';
+import { IconButton } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 import { pushMessage } from '../firebase';
 

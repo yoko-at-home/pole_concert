@@ -1,113 +1,101 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color='inherit' href='https://twitter.com/yokoiwasaki6'
-        target='_blank'
-        rel='noopener'>
+    <Typography variant="body2" color="text.secondary" align="center">
+      {"Copyright © "}
+      <Link
+        color="inherit"
+        href="https://twitter.com/yokoiwasaki6"
+        target="_blank"
+        rel="noopener"
+      >
         yoko
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+const Paper = styled("div")(({ theme }) => ({
+  marginTop: theme.spacing(8),
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textAlign: "center",
+}));
+
+const Form = styled("form")(({ theme }) => ({
+  width: "100%",
+  marginTop: theme.spacing(1),
+}));
+
+const SubmitButton = styled(Button)(({ theme }) => ({
+  margin: theme.spacing(3, 0, 2),
 }));
 
 export default function SignIn({ setName }) {
-  const classes = useStyles();
   const [disabled, setDisabled] = useState(true);
-  const [string, setString] = useState('');
+  const [string, setString] = useState("");
   const [isComposed, setIsComposed] = useState(false);
 
   useEffect(() => {
-    const disabled = string === '';
+    const disabled = string === "";
     setDisabled(disabled);
   }, [string]);
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component='h1' variant='h5'>
-          【Qinの国民に告ぐ】
-          <br />
-          ニックネームを入力して入室し、鬨の声をあげよ！！
+      <Paper>
+        <Typography component="h1" variant="h5">
+          ようこそ
         </Typography>
-
-        <form className={classes.form} noValidate>
+        <Form noValidate>
           <TextField
-            variant='outlined'
-            margin='normal'
+            variant="outlined"
+            margin="normal"
             required
             fullWidth
-            id='name'
-            label='ニックネーム'
-            name='name'
+            id="name"
+            label="ニックネーム"
+            name="name"
+            autoComplete="name"
             autoFocus
             onChange={(e) => setString(e.target.value)}
             onKeyDown={(e) => {
               if (isComposed) return;
-
-              if (e.key === 'Enter') {
-                setName(e.target.value);
+              if (e.key === "Enter") {
                 e.preventDefault();
+                setName(e.target.value);
               }
             }}
             onCompositionStart={() => setIsComposed(true)}
             onCompositionEnd={() => setIsComposed(false)}
           />
-          <Button
-            type='button'
+          <SubmitButton
+            type="button"
             fullWidth
-            variant='contained'
-            color='primary'
-            className={classes.submit}
+            variant="contained"
+            color="primary"
             disabled={disabled}
             onClick={() => {
               setName(string);
             }}
           >
-            Lightinig Talk会に参加する
-          </Button>
-        </form>
-        <Typography component='p' variant='p'>
-          <br />
-          鬨の声（ときのこえ）とは
-          <br />
-          戦国時代の合戦において、開戦直前に士気を高める意味合いで「エイエイオー！」などと全軍で発する叫び声のことである
-        </Typography>
-      </div>
+            はじめる
+          </SubmitButton>
+        </Form>
+      </Paper>
       <Box mt={8}>
         <Copyright />
       </Box>

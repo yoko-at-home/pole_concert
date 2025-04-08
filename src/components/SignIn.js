@@ -95,7 +95,7 @@ export default function SignIn({ setName }) {
               required
               fullWidth
               id="name"
-              label="ニックネーム"
+              label="お名前 | ニックネーム可"
               name="name"
               autoFocus
               onChange={(e) => setString(e.target.value)}
@@ -118,7 +118,7 @@ export default function SignIn({ setName }) {
               disabled={disabled}
               onClick={() => setName(string)}
             >
-              はじめる
+              メッセージルームに入室
             </SubmitButton>
           </Form>
           <Box mt={8}>

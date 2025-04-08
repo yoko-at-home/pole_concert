@@ -1,1 +1,1 @@
-#Qin Lightning Talk Chat App
+#Polepole concert message App

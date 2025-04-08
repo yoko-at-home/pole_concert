@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
@@ -12,23 +11,14 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
-      <Link
-        color="inherit"
-        href="https://twitter.com/yokoiwasaki6"
-        target="_blank"
-        rel="noopener"
-      >
-        yoko
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
+      yoko {new Date().getFullYear()}
     </Typography>
   );
 }
 
 const Root = styled("div")({
   minHeight: "100vh",
-  backgroundImage: "url('/background.jpg')",
+  backgroundImage: "url('/background.png')",
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
@@ -41,11 +31,13 @@ const Paper = styled("div")(({ theme }) => ({
   marginTop: theme.spacing(8),
   display: "flex",
   flexDirection: "column",
-  alignItems: "flex-start",
-  textAlign: "left",
+  alignItems: "center",
+  textAlign: "center",
   backgroundColor: "rgba(255, 255, 255, 0.9)",
   padding: theme.spacing(4),
   borderRadius: theme.spacing(2),
+  width: "100%",
+  maxWidth: "400px",
 }));
 
 const Form = styled("form")(({ theme }) => ({

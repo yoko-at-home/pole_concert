@@ -26,12 +26,26 @@ function Copyright() {
   );
 }
 
+const Root = styled("div")({
+  minHeight: "100vh",
+  backgroundImage: "url('/background.jpg')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
 const Paper = styled("div")(({ theme }) => ({
   marginTop: theme.spacing(8),
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
+  alignItems: "flex-start",
+  textAlign: "left",
+  backgroundColor: "rgba(255, 255, 255, 0.9)",
+  padding: theme.spacing(4),
+  borderRadius: theme.spacing(2),
 }));
 
 const Form = styled("form")(({ theme }) => ({
@@ -54,51 +68,64 @@ export default function SignIn({ setName }) {
   }, [string]);
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Paper>
-        <Typography component="h1" variant="h5">
-          ようこそ
-        </Typography>
-        <Form noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            label="ニックネーム"
-            name="name"
-            autoComplete="name"
-            autoFocus
-            onChange={(e) => setString(e.target.value)}
-            onKeyDown={(e) => {
-              if (isComposed) return;
-              if (e.key === "Enter") {
-                e.preventDefault();
-                setName(e.target.value);
-              }
-            }}
-            onCompositionStart={() => setIsComposed(true)}
-            onCompositionEnd={() => setIsComposed(false)}
-          />
-          <SubmitButton
-            type="button"
-            fullWidth
-            variant="contained"
-            color="primary"
-            disabled={disabled}
-            onClick={() => {
-              setName(string);
-            }}
+    <Root>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Paper>
+          <Typography
+            component="h1"
+            variant="h5"
+            align="left"
+            sx={{ width: "100%" }}
           >
-            はじめる
-          </SubmitButton>
-        </Form>
-      </Paper>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
+            ポレポーレコンサートにお越しいただきありがとうございます！
+          </Typography>
+          <Typography
+            component="h1"
+            variant="h5"
+            align="left"
+            sx={{ width: "100%" }}
+          >
+            ぜひメッセージをお寄せください。
+          </Typography>
+          <Form noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="ニックネーム"
+              name="name"
+              autoFocus
+              onChange={(e) => setString(e.target.value)}
+              onKeyDown={(e) => {
+                if (isComposed) return;
+
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  setName(e.target.value);
+                }
+              }}
+              onCompositionStart={() => setIsComposed(true)}
+              onCompositionEnd={() => setIsComposed(false)}
+            />
+            <SubmitButton
+              type="button"
+              fullWidth
+              variant="contained"
+              color="primary"
+              disabled={disabled}
+              onClick={() => setName(string)}
+            >
+              はじめる
+            </SubmitButton>
+          </Form>
+          <Box mt={8}>
+            <Copyright />
+          </Box>
+        </Paper>
+      </Container>
+    </Root>
   );
 }

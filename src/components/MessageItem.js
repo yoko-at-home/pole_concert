@@ -14,6 +14,7 @@ import { gravatarPath } from '../gravatar';
 const InlineTypography = styled(Typography)({
   display: "inline",
   color: "#fff",
+  wordBreak: "break-word",
 });
 
 const MessageItem = ({ isLastItem, name, text }) => {

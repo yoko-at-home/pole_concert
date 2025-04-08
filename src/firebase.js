@@ -34,7 +34,13 @@ const database = getDatabase(app);
 export const messagesRef = ref(database, "messages");
 
 export const pushMessage = ({ name, text }) => {
-  push(messagesRef, { name, text });
+  try {
+    console.log("Pushing message to Firebase:", { name, text });
+    const newMessageRef = push(messagesRef, { name, text });
+    console.log("Message pushed successfully with key:", newMessageRef.key);
+  } catch (error) {
+    console.error("Error pushing message to Firebase:", error);
+  }
 };
 
 export const getMessages = (callback) => {

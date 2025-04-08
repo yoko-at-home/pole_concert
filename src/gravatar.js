@@ -5,7 +5,7 @@ export const gravatarPath = (string) => {
   const md5 = createHash("md5");
   const digest = md5.update(lowerCaseString, "binary").digest("hex");
   // return `https://www.gravatar.com/avatar/${digest}/?d=wavatar`;
-  // return `https://www.gravatar.com/avatar/${digest}/?d=monsterid`;
-  return `https://www.gravatar.com/avatar/${digest}/?d=retro`;
+  return `https://www.gravatar.com/avatar/${digest}/?d=monsterid`;
+  // return `https://www.gravatar.com/avatar/${digest}/?d=retro`;
   // return `https://www.gravatar.com/avatar/${digest}/?d=identicon`;
 };

@@ -33,8 +33,8 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 export const messagesRef = ref(database, "messages");
 
-export const pushMessage = ({ name, text, IsChecked }) => {
-  push(messagesRef, { name, text, IsChecked });
+export const pushMessage = ({ name, text }) => {
+  push(messagesRef, { name, text });
 };
 
 export const getMessages = (callback) => {

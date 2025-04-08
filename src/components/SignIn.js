@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
+import { List, ListItem } from "@mui/material";
 
 function Copyright() {
   return (
@@ -13,6 +14,19 @@ function Copyright() {
       {"Copyright © "}
       yoko {new Date().getFullYear()}
     </Typography>
+  );
+}
+function Notes() {
+  return (
+    <List>
+      <ListItem>
+        不特定多数の方が参加するため、電話番号などの個人情報の入力はお控えください。
+      </ListItem>
+      <ListItem>送信したメッセージは削除・編集できません。</ListItem>
+      <ListItem>
+        管理人が必要と判断した場合、メッセージを削除することがあります。
+      </ListItem>
+    </List>
   );
 }
 
@@ -113,6 +127,10 @@ export default function SignIn({ setName }) {
               メッセージルームに入室
             </SubmitButton>
           </Form>
+
+          <Box mt={8}>
+            <Notes />
+          </Box>
           <Box mt={8}>
             <Copyright />
           </Box>

@@ -13,7 +13,7 @@ import { gravatarPath } from '../gravatar';
 
 const InlineTypography = styled(Typography)({
   display: "inline",
-  color: "#fff",
+  color: "#endregion",
   wordBreak: "break-word",
 });
 

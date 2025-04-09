@@ -52,7 +52,7 @@ const MessageList = () => {
           backgroundColor: "rgba(255, 255, 255, 0.2)",
           p: 2,
           textAlign: "center",
-          color: "white",
+          color: "#endregion",
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>

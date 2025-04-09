@@ -8,8 +8,9 @@ const Root = styled("div")({
   display: "grid",
   height: "100vh",
   gridTemplateRows: "1fr auto",
-  background: "radial-gradient(circle, rgba(1,17,97,1) 48%, #110104 96%)",
-  color: "#fff",
+  // background:
+  //   "radial-gradient(circle, rgb(126, 196, 237) 28%,rgb(84, 143, 128) 80%)",
+  color: "#endregion",
 });
 
 const Main = ({ name }) => {

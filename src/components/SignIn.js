@@ -19,10 +19,7 @@ function Copyright() {
 function Notes() {
   return (
     <List>
-      <ListItem>
-        不特定多数の方が参加するため、電話番号などの個人情報の入力はお控えください。
-      </ListItem>
-      <ListItem>送信したメッセージは削除・編集できません。</ListItem>
+      <ListItem>電話番号などの個人情報の入力はお控えください。</ListItem>
       <ListItem>
         管理人が必要と判断した場合、メッセージを削除することがあります。
       </ListItem>
@@ -81,14 +78,6 @@ export default function SignIn({ setName }) {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper>
-          <Typography
-            component="h1"
-            variant="h5"
-            align="left"
-            sx={{ width: "100%" }}
-          >
-            ポレポーレコンサートにお越しいただきありがとうございます！
-          </Typography>
           <Typography
             component="h1"
             variant="h5"

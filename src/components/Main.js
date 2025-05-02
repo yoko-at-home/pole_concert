@@ -1,23 +1,78 @@
-import React from 'react';
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
 
-import MessageInputField from './MessageInputField';
-import MessageList from './MessageList';
+import MessageInputField from "./MessageInputField";
+import MessageList from "./MessageList";
 
 const Root = styled("div")({
   display: "grid",
   height: "100vh",
   gridTemplateRows: "1fr auto",
-  // background:
-  //   "radial-gradient(circle, rgb(126, 196, 237) 28%,rgb(84, 143, 128) 80%)",
   color: "#endregion",
 });
 
-const Main = ({ name }) => {
+const InputContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  gap: "0px",
+  paddingRight: "calc(26px + 48px)",
+  backgroundColor: "white",
+});
+
+const NameContainer = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
+  paddingBottom: "20px", // 26px (margin) + 48px (send button width)
+});
+
+const Main = () => {
+  const [name, setName] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [nameError, setNameError] = useState(false);
+
+  const handleNameChange = (e) => {
+    const value = e.target.value;
+    setName(value);
+    setDisabled(value === "");
+    setNameError(false);
+  };
+
+  const handleMessageSubmit = () => {
+    if (!name) {
+      setNameError(true);
+    }
+  };
+
   return (
     <Root>
       <MessageList />
-      <MessageInputField name={name} />
+      <InputContainer>
+        <MessageInputField
+          name={name}
+          disabled={disabled}
+          onMessageSubmit={handleMessageSubmit}
+        />
+        <NameContainer>
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            id="name"
+            label="名前 | ニックネーム"
+            name="name"
+            value={name}
+            onChange={handleNameChange}
+            error={nameError}
+            helperText={
+              nameError ? "メッセージを送信するには名前を入力してください" : ""
+            }
+            sx={{ maxWidth: "400px" }}
+          />
+        </NameContainer>
+      </InputContainer>
     </Root>
   );
 };

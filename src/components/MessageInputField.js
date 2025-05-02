@@ -13,12 +13,22 @@ const Root = styled("div")({
   borderRadius: "5px",
   padding: "1rem",
   color: "#fff",
+  display: "flex",
+  justifyContent: "flex-end",
 });
 
-const MessageInputField = ({ name }) => {
+const MessageInputField = ({ name, disabled, onMessageSubmit }) => {
   const inputEl = useRef(null);
   const [text, setText] = useState("");
   const avatarPath = gravatarPath(name);
+
+  const handleSubmit = () => {
+    if (disabled) {
+      onMessageSubmit();
+      return;
+    }
+    // 既存の送信処理
+  };
 
   return (
     <Root>
@@ -32,6 +42,7 @@ const MessageInputField = ({ name }) => {
             name={name}
             setText={setText}
             text={text}
+            disabled={disabled}
           />
         </Grid>
         <Grid item xs={1}>
@@ -40,6 +51,8 @@ const MessageInputField = ({ name }) => {
             name={name}
             setText={setText}
             text={text}
+            disabled={disabled}
+            onSubmit={handleSubmit}
           />
         </Grid>
       </Grid>

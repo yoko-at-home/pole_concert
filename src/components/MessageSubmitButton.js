@@ -4,8 +4,20 @@ import SendIcon from "@mui/icons-material/Send";
 
 import { pushMessage } from '../firebase';
 
-const MessageSubmitButton = ({ inputEl, name, setText, text }) => {
+const MessageSubmitButton = ({
+  inputEl,
+  name,
+  setText,
+  text,
+  disabled,
+  onSubmit,
+}) => {
   const handleSubmit = async () => {
+    if (disabled) {
+      onSubmit();
+      return;
+    }
+
     try {
       console.log("Submitting message:", { name, text });
       if (!name || !text) {

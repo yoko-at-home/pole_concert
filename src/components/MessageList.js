@@ -44,21 +44,7 @@ const MessageList = () => {
 
   return (
     <List className={Root}>
-      <Box
-        sx={{
-          position: "sticky",
-          top: 0,
-          zIndex: 1,
-          backgroundColor: "rgba(255, 255, 255, 0.2)",
-          p: 2,
-          textAlign: "center",
-          color: "#endregion",
-        }}
-      >
-        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-          ポレポーレ第3回コンサートご来場ありがとうございます
-        </Typography>
-      </Box>
+
       {messages.map(({ key, name, text }, index) => {
         const isLastItem = length === index + 1;
         return (

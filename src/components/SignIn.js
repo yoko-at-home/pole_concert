@@ -19,12 +19,8 @@ function Copyright() {
 function Notes() {
   return (
     <List>
-      <ListItem>電話番号などの個人情報の入力はお控えください。</ListItem>
       <ListItem>
-        管理人が必要と判断した場合、メッセージを削除することがあります。
-      </ListItem>
-      <ListItem>
-        再入場の際に同じアイコンを使用したい場合は、同じ名前（ニックネーム）で入場してください。
+        で同じアイコンを使用したい場合は、同じ名前（ニックネーム）で入場してください。
       </ListItem>
     </List>
   );
@@ -84,7 +80,7 @@ export default function SignIn({ setName }) {
             align="left"
             sx={{ width: "100%" }}
           >
-            ぜひメッセージをお寄せください。
+            メッセージ入れられるよ
           </Typography>
           <Form noValidate>
             <TextField

@@ -20,7 +20,7 @@ function Notes() {
   return (
     <List>
       <ListItem>
-        で同じアイコンを使用したい場合は、同じ名前（ニックネーム）で入場してください。
+        同じアイコンを使用したい場合は、同じ名前で入場してください。
       </ListItem>
     </List>
   );
@@ -77,10 +77,10 @@ export default function SignIn({ setName }) {
           <Typography
             component="h1"
             variant="h5"
-            align="left"
+            align="center"
             sx={{ width: "100%" }}
           >
-            メッセージ入れられるよ
+            メッセージをどうぞ
           </Typography>
           <Form noValidate>
             <TextField

@@ -28,6 +28,7 @@ const NameContainer = styled(Box)({
   justifyContent: "center",
   width: "100%",
   paddingBottom: "20px", // 26px (margin) + 48px (send button width)
+  margin: "0px, 6px, 0px, 6px",
 });
 
 const Main = () => {

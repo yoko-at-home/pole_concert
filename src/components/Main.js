@@ -11,14 +11,16 @@ const Root = styled("div")({
   height: "100vh",
   gridTemplateRows: "1fr auto",
   color: "#endregion",
+  marginBottom: "20px",
 });
 
 const InputContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
   gap: "0px",
-  paddingRight: "calc(26px + 48px)",
+  // paddingRight: "calc(26px + 48px)",
   backgroundColor: "white",
+  marginBottom: "20px",
 });
 
 const NameContainer = styled(Box)({

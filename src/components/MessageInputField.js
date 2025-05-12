@@ -8,7 +8,7 @@ import MessageSubmitButton from "./MessageSubmitButton";
 
 const Root = styled("div")({
   gridRow: 2,
-  margin: "26px",
+  margin: "6px",
   backgroundColor: "#e7f5ed",
   borderRadius: "5px",
   padding: "1rem",
